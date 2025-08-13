@@ -13,7 +13,6 @@ class Track(Base):
     id = Column(BigInteger, primary_key=True, autoincrement=True)
     title = Column(String(255))
     source_type = Column(Enum(SourceType), nullable=False)
-    source_url = Column(Text)
     file_path = Column(String(512))
     sample_rate = Column(Integer)
     duration_ms = Column(Integer)
