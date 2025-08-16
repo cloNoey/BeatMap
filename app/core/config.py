@@ -4,11 +4,8 @@ import os
 
 class Settings(BaseSettings):
     APP_ENV: str = "dev"
-    APP_HOST: str = "0.0.0.0"
-    APP_PORT: int = 8000
 
-    DATABASE_URL: str
-    REDIS_URL: str
+    REDIS_URL: str = "redis://localhost:6379/0"
     RQ_QUEUE: str = "analysis"
 
     STORAGE_BACKEND: str = "local"

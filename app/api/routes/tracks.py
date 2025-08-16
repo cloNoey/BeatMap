@@ -5,6 +5,7 @@ from app.db.session import SESSION
 from app.db.models.track import Track, SourceType
 from sqlalchemy import insert, update
 from starlette.status import HTTP_201_CREATED
+from typing import Tuple
 import yt_dlp
 
 router = APIRouter()
@@ -43,7 +44,7 @@ async def _ffmpeg_convert_to_wav(src_path: str, dst_path: str) -> None:
     except subprocess.CalledProcessError:
         raise HTTPException(500, "오디오를 wav로 변환하는 중 오류가 발생했습니다.")
 
-async def _download_first_youtube_audio_to_wav(url: str) -> tuple[str, str]:
+async def _download_first_youtube_audio_to_wav(url: str) -> Tuple[str, str]:
     tmp_dir = tempfile.mkdtemp()
     outtmpl = os.path.join(tmp_dir, "%(id)s.%(ext)s")
 

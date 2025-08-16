@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from app.core.logging import logger
-from app.db.base import Base
-from app.db.session import engine
+# from app.core.logging import logger
+# from app.db.base import Base
+# from app.db.session import engine
 from app.api.routes.tracks import router as tracks_router
 from app.api.routes.analysis import router as analysis_router
 from app.api.routes.stems import router as stems_router
