@@ -35,7 +35,7 @@ async def _finalize_record(track_id: int, file_path: str, status: str = "pending
 
 async def _ffmpeg_convert_to_wav(src_path: str, dst_path: str) -> None:
     def _run():
-        cmd = ["ffmpeg", "-y", "-i", src_path, "-acodec", "pcm_s16le", "-ar", "44100", dst_path]
+        cmd = ["ffmpeg", "-y", "-i", src_path, "-ac", "1", "-ar", str(settings.TARGET_SR), "-sample_fmt", "s16", "-f", "wav", dst_path]
         subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
         await asyncio.to_thread(_run)
